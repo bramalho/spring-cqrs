@@ -33,7 +33,6 @@ public class BankAccountAggregate {
 
     @CommandHandler
     public BankAccountAggregate(CreateAccountCommand command) {
-
         AggregateLifecycle.apply(
                 new AccountCreatedEvent(
                         command.getAccountId(),
