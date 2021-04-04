@@ -20,18 +20,14 @@ public class ExceptionHandlers extends ResponseEntityExceptionHandler {
     public ResponseEntity<Object> handleAccountNotFound(AccountNotFoundException ex) {
         log.error(REQUESTED_ACCOUNT_NOT_FOUND);
 
-        return buildResponseEntity(
-                new ResponseError(NOT_FOUND, REQUESTED_ACCOUNT_NOT_FOUND)
-        );
+        return buildResponseEntity(new ResponseError(NOT_FOUND, REQUESTED_ACCOUNT_NOT_FOUND));
     }
 
     @ExceptionHandler(InsufficientBalanceException.class)
     public ResponseEntity<Object> handleInsufficientBalance(InsufficientBalanceException ex) {
         log.error(INSUFFICIENT_BALANCE_EXCEPTION);
 
-        return buildResponseEntity(
-                new ResponseError(BAD_REQUEST, INSUFFICIENT_BALANCE_EXCEPTION)
-        );
+        return buildResponseEntity(new ResponseError(BAD_REQUEST, INSUFFICIENT_BALANCE_EXCEPTION));
     }
 
     private ResponseEntity<Object> buildResponseEntity(ResponseError responseError) {

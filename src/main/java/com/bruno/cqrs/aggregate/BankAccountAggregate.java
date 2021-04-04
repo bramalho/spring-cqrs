@@ -34,11 +34,7 @@ public class BankAccountAggregate {
     @CommandHandler
     public BankAccountAggregate(CreateAccountCommand command) {
         AggregateLifecycle.apply(
-                new AccountCreatedEvent(
-                        command.getAccountId(),
-                        command.getInitialBalance(),
-                        command.getOwner()
-                )
+                new AccountCreatedEvent(command.getAccountId(), command.getInitialBalance(), command.getOwner())
         );
     }
 
@@ -51,12 +47,7 @@ public class BankAccountAggregate {
 
     @CommandHandler
     public void handle(CreditMoneyCommand command) {
-        AggregateLifecycle.apply(
-                new MoneyCreditedEvent(
-                        command.getAccountId(),
-                        command.getCreditAmount()
-                )
-        );
+        AggregateLifecycle.apply(new MoneyCreditedEvent(command.getAccountId(), command.getCreditAmount()));
     }
 
     @EventSourcingHandler
@@ -66,12 +57,7 @@ public class BankAccountAggregate {
 
     @CommandHandler
     public void handle(DebitMoneyCommand command) {
-        AggregateLifecycle.apply(
-                new MoneyDebitedEvent(
-                        command.getAccountId(),
-                        command.getDebitAmount()
-                )
-        );
+        AggregateLifecycle.apply(new MoneyDebitedEvent(command.getAccountId(), command.getDebitAmount()));
     }
 
     @EventSourcingHandler

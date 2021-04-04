@@ -27,17 +27,15 @@ public class BankAccountProjection {
     @EventHandler
     public void on(AccountCreatedEvent event) {
         log.debug("Handling a Bank Account creation command {}", event.getId());
-        BankAccount bankAccount = new BankAccount(
-                event.getId(),
-                event.getOwner(),
-                event.getInitialBalance()
-        );
+
+        BankAccount bankAccount = new BankAccount(event.getId(), event.getOwner(), event.getInitialBalance());
         this.repository.save(bankAccount);
     }
 
     @EventHandler
     public void on(MoneyCreditedEvent event) throws AccountNotFoundException {
         log.debug("Handling a Bank Account Credit command {}", event.getId());
+
         Optional<BankAccount> optionalBankAccount = this.repository.findById(event.getId());
         if (optionalBankAccount.isPresent()) {
             BankAccount bankAccount = optionalBankAccount.get();
@@ -51,6 +49,7 @@ public class BankAccountProjection {
     @EventHandler
     public void on(MoneyDebitedEvent event) throws AccountNotFoundException {
         log.debug("Handling a Bank Account Debit command {}", event.getId());
+
         Optional<BankAccount> optionalBankAccount = this.repository.findById(event.getId());
         if (optionalBankAccount.isPresent()) {
             BankAccount bankAccount = optionalBankAccount.get();
@@ -64,6 +63,7 @@ public class BankAccountProjection {
     @QueryHandler
     public BankAccount handle(FindBankAccountQuery query) {
         log.debug("Handling FindBankAccountQuery query: {}", query);
+
         return this.repository.findById(query.getAccountId()).orElse(null);
     }
 }

@@ -29,16 +29,10 @@ public class AccountCommandService {
     }
 
     public CompletableFuture<String> creditMoneyToAccount(String accountId, MoneyAmountDTO moneyCreditDTO) {
-        return this.commandGateway.send(new CreditMoneyCommand(
-                formatUuid(accountId),
-                moneyCreditDTO.getAmount()
-        ));
+        return this.commandGateway.send(new CreditMoneyCommand(formatUuid(accountId), moneyCreditDTO.getAmount()));
     }
 
     public CompletableFuture<String> debitMoneyFromAccount(String accountId, MoneyAmountDTO moneyDebitDTO) {
-        return this.commandGateway.send(new DebitMoneyCommand(
-                formatUuid(accountId),
-                moneyDebitDTO.getAmount()
-        ));
+        return this.commandGateway.send(new DebitMoneyCommand(formatUuid(accountId), moneyDebitDTO.getAmount()));
     }
 }

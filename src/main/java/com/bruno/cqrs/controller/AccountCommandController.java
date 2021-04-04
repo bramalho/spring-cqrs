@@ -14,7 +14,7 @@ import static org.springframework.http.HttpStatus.CREATED;
 
 @RestController
 @RequestMapping(value = "/accounts")
-@Api(value = "Bank Account Commands", description = "Bank Account Commands API")
+@Api(value = "Bank Account Commands")
 @AllArgsConstructor
 public class AccountCommandController {
     private final AccountCommandService accountCommandService;

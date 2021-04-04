@@ -32,7 +32,7 @@ public class SwaggerConfiguration {
                 "Java spring boot playground",
                 "1.0.0",
                 "",
-                new Contact("Bruno Ramalho", "https://google.com", "...@gmail.com"),
+                new Contact("Bruno Ramalho", "", ""),
                 "",
                 "",
                 Collections.emptyList()

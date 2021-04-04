@@ -14,7 +14,7 @@ import java.util.concurrent.CompletableFuture;
 
 @RestController
 @RequestMapping(value = "/accounts")
-@Api(value = "Bank Account Queries", description = "Bank Account Query Events API")
+@Api(value = "Bank Account Queries")
 @AllArgsConstructor
 public class AccountQueryController {
 
